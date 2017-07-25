@@ -8,9 +8,10 @@ import * as ejs from 'ejs';
 import * as mongoose from 'mongoose';
 import * as passport from 'passport';
 
-import routes from './routes/index';
 import users from './routes/users';
+import books from './models/book';
 require('./models/user');
+require('./config/passport');
 
 let app = express();
 
@@ -30,9 +31,9 @@ app.use('/ngApp', express.static(path.join(__dirname, 'ngApp')));
 app.use('/api', express.static(path.join(__dirname, 'api')));
 
 app.use(passport.initialize());
-mongoose.connect('mongodb://mwhite:blue2@ds163232.mlab.com:63232/comicbook');
 
-app.use('/', routes);
+mongoose.connect('mongodb://isaac:123@ds139969.mlab.com:39969/security-practice');
+
 app.use('/userRoutes/api/', users);
 
 

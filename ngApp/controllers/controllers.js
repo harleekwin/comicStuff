@@ -2,19 +2,32 @@ var comics;
 (function (comics) {
     var Controllers;
     (function (Controllers) {
-        var HomeController = (function () {
-            function HomeController() {
-                this.message = 'Hello from the home page!';
+        var LoginController = (function () {
+            function LoginController(userService, $window) {
+                this.userService = userService;
+                this.$window = $window;
             }
-            return HomeController;
+            LoginController.prototype.login = function () {
+                var _this = this;
+                this.userService.loginUser(this.userInfo).then(function (data) {
+                    _this.$window.localStorage.setItem("token", JSON.stringify(data.token));
+                    alert('login successful');
+                });
+            };
+            return LoginController;
         }());
-        Controllers.HomeController = HomeController;
-        var AboutController = (function () {
-            function AboutController() {
-                this.message = 'Hello from the about page!';
+        Controllers.LoginController = LoginController;
+        var RegisterController = (function () {
+            function RegisterController(userService) {
+                this.userService = userService;
             }
-            return AboutController;
+            RegisterController.prototype.signup = function () {
+                this.userService.registerUser(this.user).then(function () {
+                    alert('signup successful, please login');
+                });
+            };
+            return RegisterController;
         }());
-        Controllers.AboutController = AboutController;
+        Controllers.RegisterController = RegisterController;
     })(Controllers = comics.Controllers || (comics.Controllers = {}));
 })(comics || (comics = {}));

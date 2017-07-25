@@ -6,9 +6,9 @@ var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var passport = require("passport");
-var index_1 = require("./routes/index");
 var users_1 = require("./routes/users");
 require('./models/user');
+require('./config/passport');
 var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -21,8 +21,7 @@ app.use('/bower_components', express.static(path.join(__dirname, 'bower_componen
 app.use('/ngApp', express.static(path.join(__dirname, 'ngApp')));
 app.use('/api', express.static(path.join(__dirname, 'api')));
 app.use(passport.initialize());
-mongoose.connect('mongodb://mwhite:blue2@ds163232.mlab.com:63232/comicbook');
-app.use('/', index_1.default);
+mongoose.connect('mongodb://isaac:123@ds139969.mlab.com:39969/security-practice');
 app.use('/userRoutes/api/', users_1.default);
 app.get('/*', function (req, res, next) {
     if (/.js|.html|.css|templates|js|scripts/.test(req.path) || req.xhr) {

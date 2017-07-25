@@ -1,12 +1,38 @@
 namespace comics.Controllers {
 
-    export class HomeController {
-        public message = 'Hello from the home page!';
+    export class LoginController {
+      public userInfo
+
+      public login() {
+        this.userService.loginUser(this.userInfo).then((data) => {
+          this.$window.localStorage.setItem("token", JSON.stringify(data.token));
+          alert('login successful');
+        })
+      }
+
+      public constructor(
+        private userService,
+        public $window
+      ) {
+
+      }
+
     }
 
+    export class RegisterController {
+      public user
 
-    export class AboutController {
-        public message = 'Hello from the about page!';
+      public signup() {
+        this.userService.registerUser(this.user).then(() => {
+          alert('signup successful, please login');
+        })
+      }
+
+      public constructor(
+        private userService
+      ) {
+
+      }
     }
 
 }
