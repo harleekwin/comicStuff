@@ -32,7 +32,7 @@ app.use('/api', express.static(path.join(__dirname, 'api')));
 
 app.use(passport.initialize());
 
-mongoose.connect('mongodb://isaac:123@ds139969.mlab.com:39969/security-practice');
+mongoose.connect('mongodb://mwhite:blue2@ds163232.mlab.com:63232/comicbook');
 
 app.use('/userRoutes/api/', users);
 
