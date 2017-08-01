@@ -12,6 +12,7 @@ import users from './routes/users';
 import books from './models/book';
 require('./models/user');
 require('./config/passport');
+require('bootstrap');
 
 let app = express();
 

@@ -1,6 +1,6 @@
 namespace comics {
 
-    angular.module('myapp', ['ui.router', 'ngResource', 'ui.bootstrap']).config((
+    angular.module('comics', ['ui.router', 'ngResource', 'ui.bootstrap']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
         $locationProvider: ng.ILocationProvider

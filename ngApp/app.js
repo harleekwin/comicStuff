@@ -1,6 +1,6 @@
 var comics;
 (function (comics) {
-    angular.module('myapp', ['ui.router', 'ngResource', 'ui.bootstrap']).config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    angular.module('comics', ['ui.router', 'ngResource', 'ui.bootstrap']).config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
         $stateProvider
             .state('login', {
             url: '/',

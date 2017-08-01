@@ -9,6 +9,7 @@ var passport = require("passport");
 var users_1 = require("./routes/users");
 require('./models/user');
 require('./config/passport');
+require('bootstrap');
 var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

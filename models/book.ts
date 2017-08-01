@@ -1,37 +1,33 @@
 import * as mongoose from 'mongoose';
 
 export interface IBook extends mongoose.Document {
+  category: mongoose.Types.ObjectId;
   comicName: string;
   comicIssue: number;
   comicPublisher: string;
-  currentlyOwns: boolean
+  alreadyOwn: 'Y' | 'N';
 }
 
 let bookSchema = new mongoose.Schema({
   comicName: {
-    type:String,
-    required: true,
-    minlength: 2,
-    maxlength: 15
-  },
+   type: String,
+   required: true
+},
   comicIssue: {
-    type:Number,
-    required:true,
-    validate:{
-      validator:(value) => value !== '5',
-      message: '{VALUE} is not a book!'
-    }
-  },
+   type: Number,
+   required: true,
+   min: new Number(1)
+},
   comicPublisher: {
-    type:String,
+    type: String,
     required: true,
-    minlength: 2,
-    maxlength: 10
-  },
-  currentlyOwns: {
-    type: Boolean,
-    default: false
+},
+  alreadyOwn: {
+    enum:['Y', 'N'],
+    type: String,
+    required: true
   }
 });
+
 
 export default mongoose.model<IBook>('Book', bookSchema);

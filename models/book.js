@@ -4,27 +4,21 @@ var mongoose = require("mongoose");
 var bookSchema = new mongoose.Schema({
     comicName: {
         type: String,
-        required: true,
-        minlength: 2,
-        maxlength: 15
+        required: true
     },
     comicIssue: {
         type: Number,
         required: true,
-        validate: {
-            validator: function (value) { return value !== '5'; },
-            message: '{VALUE} is not a book!'
-        }
+        min: new Number(1)
     },
     comicPublisher: {
         type: String,
         required: true,
-        minlength: 2,
-        maxlength: 10
     },
-    currentlyOwns: {
-        type: Boolean,
-        default: false
+    alreadyOwn: {
+        enum: ['Y', 'N'],
+        type: String,
+        required: true
     }
 });
 exports.default = mongoose.model('Book', bookSchema);
